@@ -14,7 +14,7 @@ class Join {
       e.printStackTrace();
     }
     for (int i = 0; i < 10; i++) {
-      System.out.println(Thread.currentThread().getName() + "is printing");
+      System.out.println(Thread.currentThread().getName() + " is printing");
     }
   }
 

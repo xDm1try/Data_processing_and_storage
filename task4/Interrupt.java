@@ -3,13 +3,8 @@ package task4;
 public class Interrupt {
     public static void main(String[] args) {
         Thread daughterThread = new Thread(() -> {
-            try {
-                while (true) {
-                    System.out.println(System.currentTimeMillis());
-                    Thread.sleep(100);
-                }
-            } catch (InterruptedException e) {
-                return;
+            while (!Thread.currentThread().isInterrupted()) {
+                System.out.println(System.currentTimeMillis());
             }
         });
         daughterThread.start();
