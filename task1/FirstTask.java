@@ -2,6 +2,7 @@
 class FirstTask {
     public static void main(String[] args) {
         Runnable print = () -> {
+            
             for (int i = 0; i < 10; i++) {
                 System.out.println(Thread.currentThread().getName() + " print " + i);
                 try {
