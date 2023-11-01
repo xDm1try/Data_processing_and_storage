@@ -1,15 +1,22 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
 
 public final class Founder {
     
     private final List<Runnable> workers;
-    private static CountDownLatch latch;
+    private static CyclicBarrier barrier;
 
     public Founder(final Company company) {
         this.workers = new ArrayList<>(company.getDepartmentsCount());
-        this.latch = new CountDownLatch(company.getDepartmentsCount());
+        this.barrier = new CyclicBarrier(company.getDepartmentsCount(), new Runnable (){
+            public void run(){
+                System.out.println(Thread.currentThread());
+                company.showCollaborativeResult();    
+            }
+        });
         for(int i = 0; i < company.getDepartmentsCount(); i++){
             this.workers.add(i, new Worker(company.getFreeDepartment(i)));
         }
@@ -19,20 +26,13 @@ public final class Founder {
         for (final Runnable worker : workers) {
             new Thread(worker).start();
         }
-        System.out.println("WAITING");
-        try{
-            latch.await();
-        }catch(InterruptedException ex){
-            System.out.println("MAIN INTERRUPTED");
-        }
-        
-        System.out.println("READY");
     }
     public static void main(String[] args){
+        System.out.println(Thread.currentThread());
         Company company = new Company(50);
         Founder founder = new Founder(company);
         founder.start();      
-        company.showCollaborativeResult();
+        
         
     }
 
@@ -46,7 +46,14 @@ public final class Founder {
         public void run(){
             
             this.department.performCalculations();
-            latch.countDown();
+            try{
+                barrier.await();
+            }catch(BrokenBarrierException e){
+                
+            }catch(InterruptedException e){
+                
+            }
+            
         }
     }
 }

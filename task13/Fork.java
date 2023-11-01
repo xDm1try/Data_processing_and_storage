@@ -37,7 +37,6 @@ public class Fork {
             System.out.flush();
             this.nameOfOwner = null;
             lock.unlock();
-            
         }
     }
 }
