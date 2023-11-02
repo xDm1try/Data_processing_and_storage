@@ -1,5 +1,7 @@
 package task14;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -10,11 +12,10 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class Widget {
-
-    public Widget(PieceA a, PieceB b, PieceC c){
-        System.out.println("Widget created");
-    }
+    public static int count = 20;
     public static void main(String[] str){
-        
+       MakerW madeW = new MakerW();
+
+       madeW.run();
     }
 }
