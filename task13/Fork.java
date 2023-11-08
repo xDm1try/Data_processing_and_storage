@@ -11,7 +11,7 @@ public class Fork {
     private String nameOfOwner;
     private Condition condition;
     public Fork(String nameOfFork){
-        this.lock = new ReentrantLock();
+        this.lock = new ReentrantLock(true);
         this.nameOfFork = nameOfFork;
     }
     public void takeFork(){
@@ -38,5 +38,8 @@ public class Fork {
             this.nameOfOwner = null;
             lock.unlock();
         }
+    }
+    public boolean isLocked(){
+        return this.lock.isLocked();
     }
 }

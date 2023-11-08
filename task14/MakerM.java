@@ -12,17 +12,18 @@ public class MakerM implements Runnable, Maker{
         Semaphore makerBSemaphore = new Semaphore(0);
         Semaphore makerCSemaphore = new Semaphore(0);
         
-        Thread makerB = new Thread(new MakerB(personalSemaphore));
-        Thread makerC = new Thread(new MakerC(personalSemaphore));
+        Thread makerB = new Thread(new MakerB(makerBSemaphore));
+        Thread makerC = new Thread(new MakerC(makerCSemaphore));
         makerB.start();
         makerC.start();
-        try {
+        for(int i = 0; i < Widget.count; i++){
+            try {
             makerBSemaphore.acquire();
             makerCSemaphore.acquire();
-            this.makeStuff(500);
             System.out.println("Module is made");
-        } catch (Exception e) {
-            // TODO: handle exception
+            personalSemaphore.release();
+            } catch (Exception e) {
+            }
         }
 
     }

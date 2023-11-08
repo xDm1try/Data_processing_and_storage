@@ -14,8 +14,8 @@ public class MakerA implements Runnable, Maker{
     public void run(){
         for(int i = 0; i < Widget.count; i++){
             this.makeStuff(1000);
-            personalSemaphore.release();
             System.out.println("A is made");
+            personalSemaphore.release();
         }
             
     }   

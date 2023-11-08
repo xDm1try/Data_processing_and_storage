@@ -7,7 +7,6 @@ public class Writer {
 
     public void printStr() {
         System.out.println(Thread.currentThread().getName());
-        
     }
 
 }

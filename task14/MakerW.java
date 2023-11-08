@@ -3,7 +3,6 @@ package task14;
 import java.util.concurrent.Semaphore;
 
 public class MakerW implements Runnable, Maker{
-    private Semaphore personalSemaphore;
 
     public MakerW(){
     }
@@ -15,11 +14,10 @@ public class MakerW implements Runnable, Maker{
         Thread makerM = new Thread(new MakerM(makerMSemaphore));
         makerA.start();
         makerM.start();
-        while(true){
+        for(int i = 0; i < Widget.count; i++){
             try{
             makerASemaphore.acquire();
             makerMSemaphore.acquire();
-            this.makeStuff(500);
             System.out.println("Widget is made");
             }catch(InterruptedException e){
             }

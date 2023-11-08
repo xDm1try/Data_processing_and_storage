@@ -5,12 +5,10 @@ import java.util.concurrent.Semaphore;
 
 public class ThreadsBehavior implements Runnable {
         private Semaphore semaphore1;
-        private Semaphore semaphore2;
         private Writer writer;
 
-        public ThreadsBehavior(Writer writer, Semaphore semaphore1, Semaphore semaphore2){
+        public ThreadsBehavior(Writer writer, Semaphore semaphore1){
             this.semaphore1 = semaphore1;
-            this.semaphore2= semaphore2;
             this.writer = writer;
         }
 
@@ -18,8 +16,6 @@ public class ThreadsBehavior implements Runnable {
             while(true){
                 try{
                 semaphore1.acquire();
-                semaphore2.acquire();
-                semaphore1.release();
 
                 synchronized(writer){
                     writer.printStr();
@@ -28,7 +24,7 @@ public class ThreadsBehavior implements Runnable {
                 }catch(InterruptedException e){
 
                 }finally{
-                    semaphore2.release();
+                    semaphore1.release();
                 }
                 
             }

@@ -5,22 +5,23 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class List {
-    static public Node firstNode = null;
-    static public Semaphore semaphore = new Semaphore(1);
+    static public volatile Node firstNode = null;
+    static public Semaphore semaphore = new Semaphore(1, true);
     public Thread scannerThread = new Thread(new ScannerThread());
     public Thread sortThread = new Thread(){
         public void run(){
             while(true){
                 try {
-                    
-                    Thread.currentThread().sleep(5000);
+
+                    Thread.currentThread().sleep(5500);
                     semaphore.acquire();
-                    for(Node currentNode1 = firstNode; currentNode1 != null; currentNode1 = currentNode1.getNext()){
-                        for(Node currentNode2 = firstNode.getNext(); currentNode2 != null; currentNode2 = currentNode2.getNext()){
-                            if (currentNode2.getValue().compareTo(currentNode1.getValue()) == -1){
-                                String spacing = currentNode2.getValue();
-                                currentNode2.setValue(currentNode1.getValue());
-                                currentNode1.setValue(spacing);
+                    
+                    for (Node idx_i = firstNode; idx_i != null; idx_i = idx_i.getNext()) {
+                        for (Node idx_j = idx_i.getNext(); idx_j != null; idx_j = idx_j.getNext()) {
+                            if(idx_i.getValue().compareTo(idx_j.getValue()) > 0){
+                                String spacing = idx_i.getValue();
+                                idx_i.setValue(idx_j.getValue());
+                                idx_j.setValue(spacing);
                             }
                         }
                     }
