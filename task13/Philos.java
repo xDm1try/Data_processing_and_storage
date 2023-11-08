@@ -2,14 +2,16 @@ package task13;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Philos {
     private Fork leftFork;
     private Fork rightFork;
     public Thread t;
-    public static Semaphore semaphore1 = new Semaphore(9, true);
+    public static ReentrantLock forks = new ReentrantLock(true);
+    public static Condition condition = forks.newCondition();
+
 
     public Philos(Fork leftFork, Fork rightFork, String name) {
         this.leftFork = leftFork;
@@ -47,31 +49,22 @@ public class Philos {
         public void run() {
             Random rand = new Random(System.nanoTime());
             while (true) {
+                forks.lock();
                 try {
                     Thread.currentThread().sleep(rand.nextInt(250));
-                    semaphore1.acquire(1);
-                    this.leftFork.takeFork();
-                    Thread.currentThread().sleep(rand.nextInt(250));
-                    if(!this.rightFork.isLocked()){
-                        this.rightFork.takeFork();
-                    }else{
-                        this.leftFork.dropFork();
-                        Condition leftCondition = this.leftFork.lock.newCondition();
-                        Condition rightCondition = this.rightFork.lock.newCondition();
-
-                        while(!rightFork.lock.tryLock() || !leftFork.lock.tryLock()){
-                            rightCondition.await();
-                            leftCondition.await();
-                        }
-                        
+                    while(!this.leftFork.takeFork() || !this.rightFork.takeFork()){
+                        leftFork.dropFork();
+                        rightFork.dropFork();
+                        condition.await();
                     }
+                    forks.unlock();
                     Thread.currentThread().sleep(rand.nextInt(250));
 
+                    forks.lock();
                     this.leftFork.dropFork();
                     this.rightFork.dropFork();
-
-                    semaphore1.release();
-
+                    condition.signalAll();
+                    forks.unlock();
                 } catch (InterruptedException e) {
                 }
             }

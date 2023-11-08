@@ -3,43 +3,36 @@ package task13;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-import javax.swing.Renderer;
 
 public class Fork {
     public ReentrantLock lock;
     private String nameOfFork;
     private String nameOfOwner;
-    private Condition condition;
+    public Condition condition;
     public Fork(String nameOfFork){
         this.lock = new ReentrantLock(true);
         this.nameOfFork = nameOfFork;
+        this.condition = lock.newCondition();
     }
-    public void takeFork(){
-        try{
-            while(true){
-                if(!lock.isLocked()){
-                    System.out.println(Thread.currentThread().getName() + " is taking " + this.nameOfFork);
-                    this.nameOfOwner = Thread.currentThread().getName();
-                    lock.lock();
-                    break;
-                }else{
-                    System.out.println(Thread.currentThread().getName() + " try " + this.nameOfFork);
-                    Thread.currentThread().sleep(250);
-                }
-            }
-            
-        }catch(InterruptedException e){
+    public boolean takeFork(){
+        if(lock.isHeldByCurrentThread()){
+            return true;
         }
+        if(!lock.isLocked()){
+            System.out.println(Thread.currentThread().getName() + " is taking " + this.nameOfFork);
+            this.nameOfOwner = Thread.currentThread().getName();
+            lock.lock();
+            return true;
+        }
+        System.out.println(Thread.currentThread().getName() + " didnt take " + this.nameOfFork);
+        return false;
     }
     public void dropFork(){
         if (lock.isHeldByCurrentThread()){
             System.out.println(Thread.currentThread().getName() + " is dropping " + this.nameOfFork);
-            System.out.flush();
             this.nameOfOwner = null;
+            condition.signalAll();
             lock.unlock();
         }
-    }
-    public boolean isLocked(){
-        return this.lock.isLocked();
     }
 }
