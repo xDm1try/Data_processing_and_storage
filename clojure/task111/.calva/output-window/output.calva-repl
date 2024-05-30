@@ -1,0 +1,80 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Murav\Desktop\Data processing and storage\clojure\task111 & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Using host:port 127.0.0.1:49678 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉task111.core꞉>  ; Use `alt+enter` to evaluate
+clj꞉task111.core꞉> 
+; Jack-in done.
+clj꞉task111.core꞉> 
+#'task111.core/-main
+clj꞉task111.core꞉> 
+#'task111.core/generate-strings
+clj꞉task111.core꞉> 
+#'task111.core/no-repeats?
+clj꞉task111.core꞉> 
+#'task111.core/my-alphabet
+clj꞉task111.core꞉> 
+#'task111.core/n
+clj꞉task111.core꞉> 
+#'task111.core/result
+clj꞉task111.core꞉> 
+(aba abc aca acb bab bac bca bcb cab cac cba cbc)
+nil
+clj꞉task111.core꞉> 
+#'task111.core/n
+clj꞉task111.core꞉> 
+(aba abc aca acb bab bac bca bcb cab cac cba cbc)
+nil
+clj꞉task111.core꞉> 
+(aba abc aca acb bab bac bca bcb cab cac cba cbc)
+nil
+clj꞉task111.core꞉> 
+#'task111.core/my-alphabet
+clj꞉task111.core꞉> 
+#'task111.core/n
+clj꞉task111.core꞉> 
+#'task111.core/result
+clj꞉task111.core꞉> 
+(ab ac ba bc ca cb)
+nil
+clj꞉task111.core꞉> 
+#'task111.core/generate-strings
+clj꞉task111.core꞉> 
+#'task111.core/no-repeats?
+clj꞉task111.core꞉> 
+#'task111.core/my-alphabet
+clj꞉task111.core꞉> 
+#'task111.core/n
+clj꞉task111.core꞉> 
+#'task111.core/result
+clj꞉task111.core꞉> 
+(ab ac ba bc ca cb)
+nil
+clj꞉task111.core꞉> 
+#'task111.core/n
+clj꞉task111.core꞉> 
+#'task111.core/result
+clj꞉task111.core꞉> 
+(aba abc aca acb bab bac bca bcb cab cac cba cbc)
+nil
+clj꞉task111.core꞉> 

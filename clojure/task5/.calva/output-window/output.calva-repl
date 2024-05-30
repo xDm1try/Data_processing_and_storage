@@ -1,0 +1,105 @@
+; This is the Calva REPL Window.
+; It's just a file, really, with some special treatment from Calva.
+; Use it as a REPL input prompt if you like. (When the REPL is connected.)
+; TIPS: The keyboard shortcut `ctrl+alt+o r` shows and focuses this window
+; Please see https://calva.io/repl-window/ for more info.
+; Happy coding! ♥️
+
+; TIPS: As with any Clojure file when the REPL is connected:
+; - `alt+enter` evaluates the current top level form.
+; - `ctrl+enter` evaluates the current form.
+; Special for this file:
+; - `alt+up` and `alt+down` traverse up and down the REPL command history
+;    when the cursor is after the last contents at the prompt
+; 
+; See also the Calva Inspector: https://calva.io/inspector/
+
+PLEASE NOTE
+We will update the default location of this file.
+The new default location will be
+  "<projectRootPath>/.calva/repl.calva-repl"
+For now the legacy path is used by default.
+To give yourself a smooth transition, you can opt in
+to the change, by configuring this setting as false:
+  "calva.useLegacyReplWindowPath"
+and then add "**/.calva/repl.calva-repl" to your ".gitignore" file.
+
+
+This file is configured as the output destination for all REPL output.
+You can configure this with the setting:
+  "calva.outputDestinations"
+
+
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in Terminal: pushd c:\Users\Murav\Desktop\Data processing and storage\clojure\task5 & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.1.1"] -- update-in :plugins conj [cider/cider-nrepl,"0.47.1"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- repl :headless & popd
+; Using host:port 127.0.0.1:24233 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉task5.core꞉> 
+"Please see https://calva.io/output/#about-stdout-in-the-repl-window
+about why stdout printed to this file is prepended with `;` to be line comments."
+clj꞉task5.core꞉> 
+; Jack-in done.
+clj꞉task5.core꞉> 
+; City1->City3:: 0 bookings
+; City2->City3:: 0 bookings
+; Total restarts: 1
+nil
+clj꞉task5.core꞉> 
+; City1->City3:: 0 bookings
+; City2->City3:: 0 bookings
+; Total restarts: 1
+nil
+clj꞉task5.core꞉> 
+; Execution error (ArityException) at task5.core/eval9263 (form-init2923211996024817390.clj:111).
+; Wrong number of args (4) passed to: task5.core/route
+clj꞉task5.core꞉> 
+#'task5.core/spec1
+clj꞉task5.core꞉> 
+; City1->City3:: 6 bookings
+; price: 250 path: (City1 Town1_X TownX_2 City2 Town2_3 City3)
+; price: 600 path: (City1 Capital City3)
+; price: 600 path: (City1 Capital City3)
+; price: 600 path: (City1 Capital City3)
+; price: 600 path: (City1 Capital City3)
+; price: 600 path: (City1 Capital City3)
+; City2->City3:: 6 bookings
+; price: 100 path: (City2 Town2_3 City3)
+; price: 600 path: (City2 Capital City3)
+; price: 600 path: (City2 Capital City3)
+; price: 600 path: (City2 Capital City3)
+; price: 600 path: (City2 Capital City3)
+; price: 600 path: (City2 Capital City3)
+; Total restarts: 1
+nil
+clj꞉task5.core꞉> 
+; City1->City3:: 0 bookings
+; City2->City3:: 0 bookings
+; Total restarts: 1
+nil
+clj꞉task5.core꞉> 
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
+; Starting Jack-in Terminal: pushd c:\Users\Murav\Desktop\Data processing and storage\clojure\task5 & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.1.1"] -- update-in :plugins conj [cider/cider-nrepl,"0.47.1"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- repl :headless & popd
+; Using host:port 127.0.0.1:24573 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉task5.core꞉> 
+; Jack-in done.
+clj꞉task5.core꞉> 

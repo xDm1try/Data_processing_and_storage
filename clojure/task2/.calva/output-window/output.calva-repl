@@ -1,0 +1,68 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Murav\Desktop\Data processing and storage\clojure\task2 & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Murav\Desktop\Data processing and storage\clojure\task2 & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Using host:port 127.0.0.1:64039 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉task2.core꞉>  ; Use `alt+enter` to evaluate
+clj꞉task2.core꞉> 
+; Jack-in done.
+clj꞉task2.core꞉> 
+#function[task2.core/eg-tests]
+clj꞉task2.core꞉> 
+
+Testing task2.core
+
+Ran 1 tests containing 2 assertions.
+0 failures, 0 errors.
+{:test 1, :pass 2, :fail 0, :error 0, :type :summary}
+clj꞉task2.core꞉> 
+(2 3 5 7 11)
+clj꞉task2.core꞉> 
+#'task2.core/sieve
+clj꞉task2.core꞉> 
+#'task2.core/primes
+clj꞉task2.core꞉> 
+(2 3 5 7 11)
+clj꞉task2.core꞉> 
+nil
+clj꞉task2.core꞉> 
+
+Testing task2.core
+
+Ran 1 tests containing 2 assertions.
+0 failures, 0 errors.
+{:test 1, :pass 2, :fail 0, :error 0, :type :summary}
+clj꞉task2.core꞉> 
+(2 3 5 7 11 13 17 19 23 29)
+clj꞉task2.core꞉> 
+31
+clj꞉task2.core꞉> 
+9
+clj꞉task2.core꞉> 
+29
+clj꞉task2.core꞉> 
