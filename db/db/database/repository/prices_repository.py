@@ -9,10 +9,10 @@ FROM flights as f
 JOIN bookings.ticket_flights tf on f.flight_id = tf.flight_id
 GROUP BY f.flight_no, tf.fare_conditions
 ORDER BY flight_no"""))
-    set_prices(prices, db)
+    _set_prices(prices, db)
 
 
-def set_prices(prices: Result, db: Session):
+def _set_prices(prices: Result, db: Session):
     models = []
     for row in prices.all():
         row_tuple = row._data
@@ -24,4 +24,9 @@ def set_prices(prices: Result, db: Session):
 
 def get_saved_prices(db: Session):
     prices = db.query(FlightPriceModel).all()
+    print(len(prices))
+    for record in prices:
+        if record.min_amount == record.max_amount:
+            record.max_amount = None
+
     return prices
