@@ -1,4 +1,6 @@
-from sqlalchemy import Column, String, Numeric
+import uuid
+
+from sqlalchemy import Column, String, Numeric, Integer, UUID
 
 from db.database.base_model import Base
 
@@ -6,7 +8,8 @@ from db.database.base_model import Base
 class FlightPriceModel(Base):
     __tablename__ = "prices"
 
-    flight_no = Column(String, primary_key=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    flight_no = Column(String)
     fare_condition = Column(String)
-    minAmount = Column(Numeric)
-    maxAmount = Column(Numeric)
+    min_amount = Column(Numeric)
+    max_amount = Column(Numeric)
