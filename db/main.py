@@ -30,5 +30,5 @@ app = run_app()
 def hello_api():
     return {"msg": "Hello world!"}
 
-if __name__ == "__main__":
+def execute_application():
     uvicorn.run(app)
