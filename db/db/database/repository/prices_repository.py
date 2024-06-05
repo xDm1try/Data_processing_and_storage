@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from db.database.models.flight_price import FlightPriceModel
+from db.database.models.price_model import FlightPriceModel
 from sqlalchemy import text, Result
 
 

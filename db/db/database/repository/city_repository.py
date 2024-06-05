@@ -1,6 +1,7 @@
+from db.database.models.airport_model import AirportModel
 from db.database.session import Session
 
 
-def get_all_airports_of_city(city: str, db: Session):
-    airports = []
-    result = db.query()
+def get_airports(city: str, db: Session):
+    result = db.query(AirportModel).filter(AirportModel.city == city).all()
+    return result

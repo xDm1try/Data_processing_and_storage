@@ -1,2 +1,2 @@
 from .base_model import Base
-from .models.flight_price import FlightPriceModel
+from .models.price_model import FlightPriceModel
