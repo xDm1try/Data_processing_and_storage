@@ -32,3 +32,6 @@ def hello_api():
 
 def execute_application():
     uvicorn.run(app)
+
+if __name__ == "__main__":
+    execute_application()
